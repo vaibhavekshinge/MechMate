@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MechMate</string>
+    <string name="mech_mate">MECH MATE</string>
+    <string name="app_description">App that calls the nearest mechanic at your place to save our ship (SOS).</string>
+    <string name="mobno">Enter Mobile Number with proper country code</string>
+    <string name="otp">We will send you a OTP(one time password) on this given number</string>
+    <string name="otp_verification">OTP Verification</string>
+    <string name="_918888888888">+918888888888</string>
+    <string name="get_otp">GET OTP</string>
+    <string name="enterotp">Enter the OTP that sent to you</string>
+    <string name="didn_t_receive_otp">Didn\'t receive OTP?</string>
+    <string name="submit">SUBMIT</string>
+    <string name="resend_otp">Resend OTP</string>
+</resources>

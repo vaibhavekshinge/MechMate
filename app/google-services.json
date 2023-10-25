@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "799673290210",
+    "project_id": "mechmate-2a955",
+    "storage_bucket": "mechmate-2a955.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799673290210:android:3b3b7c79e63158ed753dbb",
+        "android_client_info": {
+          "package_name": "com.example.mechmate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDs6J6bihA7d8_pdduFCwDsZzpkYzjhF1M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
