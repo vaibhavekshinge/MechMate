@@ -9,24 +9,21 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-public class MechanicRegistration extends AppCompatActivity {
-    ImageView back, submit;
-    EditText mecname, shoploc, adharno, shopname, mobno;
+public class popup2 extends AppCompatActivity {
+    EditText email, password;
+    ImageView goback, enter;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mechanic_registration);
-        back = findViewById(R.id.back);
-        submit = findViewById(R.id.submit1);
-        mecname = findViewById(R.id.mecname);
-        shoploc = findViewById(R.id.shoploc);
-        adharno = findViewById(R.id.adhar);
-        shopname = findViewById(R.id.shopname);
-        mobno = findViewById(R.id.mobno);
+        setContentView(R.layout.activity_popup2);
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
+        goback = findViewById(R.id.goback2);
+        enter = findViewById(R.id.enter);
 
-        back.setOnClickListener(new View.OnClickListener() {
+        goback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), popup1.class);

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/popupwindow"
+    tools:context=".popup2">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="174dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="318dp"
+        android:layout_marginEnd="58dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/username"
+            android:ems="10"
+            android:fontFamily="@font/fredoka_one"
+            android:gravity="center"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/faintblack"
+            android:textColorHint="@color/faintblack"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/username"
+            android:ems="10"
+            android:fontFamily="@font/fredoka_one"
+            android:gravity="center"
+            android:hint="Password"
+            android:inputType="numberPassword"
+            android:textColor="@color/faintblack"
+            android:textColorHint="@color/faintblack"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/goback2"
+        android:layout_width="wrap_content"
+        android:layout_height="67dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="234dp"
+        android:layout_marginEnd="40dp"
+        app:srcCompat="@drawable/goback" />
+
+    <ImageView
+        android:id="@+id/enter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="193dp"
+        app:srcCompat="@drawable/enter" />
+
+</RelativeLayout>

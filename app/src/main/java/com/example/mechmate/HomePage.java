@@ -58,6 +58,14 @@ public class HomePage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        mecregister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getApplicationContext(), popup1.class);
+                startActivity(intent1);
+            }
+        });
     }
 
 }

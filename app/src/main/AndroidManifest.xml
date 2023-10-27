@@ -13,6 +13,12 @@
         android:theme="@style/Theme.MechMate"
         tools:targetApi="31">
         <activity
+            android:name=".popup2"
+            android:exported="false" />
+        <activity
+            android:name=".popup1"
+            android:exported="false" />
+        <activity
             android:name=".dashboard"
             android:exported="false"
             android:label="@string/title_activity_dashboard"
