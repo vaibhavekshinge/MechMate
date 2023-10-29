@@ -24,4 +24,8 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="mechanic_registration">Mechanic Registration</string>
     <string name="find_a_mechanic">Find a Mechanic</string>
+    <string name="wheels_nstarting_from_n800rs">Wheels\nstarting from\n800rs</string>
+    <string name="toolkits_nstarting_from_n400rs">toolkits\nstarting from\n400rs</string>
+    <string name="car_seats_nstarting_from_n4000rs">Car seats\nstarting from\n4000rs</string>
+    <string name="helmets_nstarting_from_n1200rs">Helmets\nstarting from\n1200rs</string>
 </resources>
