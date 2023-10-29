@@ -16,9 +16,6 @@
             android:name=".FindMechanic"
             android:exported="false" />
         <activity
-            android:name=".findamechanic"
-            android:exported="false" />
-        <activity
             android:name=".popup2"
             android:exported="false" />
         <activity
