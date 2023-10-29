@@ -74,6 +74,14 @@ public class HomePage extends AppCompatActivity {
                 startActivity(intent2);
             }
         });
+
+        buyacces.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent3 = new Intent(getApplicationContext(), BuyAccessories.class);
+                startActivity(intent3);
+            }
+        });
     }
 
 }
