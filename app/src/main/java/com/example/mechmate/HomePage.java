@@ -66,6 +66,14 @@ public class HomePage extends AppCompatActivity {
                 startActivity(intent1);
             }
         });
+
+        findmec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(getApplicationContext(), FindMechanic.class);
+                startActivity(intent2);
+            }
+        });
     }
 
 }

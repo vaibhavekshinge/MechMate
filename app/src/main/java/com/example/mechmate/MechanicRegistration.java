@@ -11,7 +11,7 @@ import android.widget.ImageView;
 
 public class MechanicRegistration extends AppCompatActivity {
     ImageView back, submit;
-    EditText mecname, shoploc, adharno, shopname, mobno;
+    EditText mecname, shoploc, adharno, shopname, email1, passwordtoregister, confirmpassword;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -24,7 +24,9 @@ public class MechanicRegistration extends AppCompatActivity {
         shoploc = findViewById(R.id.shoploc);
         adharno = findViewById(R.id.adhar);
         shopname = findViewById(R.id.shopname);
-        mobno = findViewById(R.id.mobno);
+        email1 = findViewById(R.id.email1);
+        passwordtoregister = findViewById(R.id.passwordtoregister);
+        confirmpassword = findViewById(R.id.confirmpasswordtoregister);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

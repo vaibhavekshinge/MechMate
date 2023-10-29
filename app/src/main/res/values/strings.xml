@@ -22,4 +22,6 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="mechanic_registration">Mechanic Registration</string>
+    <string name="find_a_mechanic">Find a Mechanic</string>
 </resources>
