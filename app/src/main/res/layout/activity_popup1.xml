@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/popupwindow"
+    tools:context=".popup1">
+
+    <LinearLayout
+        android:layout_width="295dp"
+        android:layout_height="258dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="234dp"
+        android:layout_marginEnd="58dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/mecnewregister"
+            android:layout_width="wrap_content"
+            android:layout_height="101dp"
+            android:layout_weight="1"
+            android:paddingTop="50dp"
+            app:srcCompat="@drawable/mecnewregister" />
+
+        <ImageView
+            android:id="@+id/mecsignin"
+            android:layout_width="wrap_content"
+            android:layout_height="101dp"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/mecsignin" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/goback1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="180dp"
+        app:srcCompat="@drawable/goback" />
+</RelativeLayout>
