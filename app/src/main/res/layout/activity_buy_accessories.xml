@@ -49,34 +49,34 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="5dp"
-            android:layout_marginBottom="5dp">
+            android:layout_marginBottom="5dp"
+            android:paddingTop="5dp">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:orientation="horizontal"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="15dp"
-                    android:background="@drawable/accs">
+                    android:background="@drawable/accs"
+                    android:orientation="horizontal">
 
 
                     <ImageView
                         android:id="@+id/mirimg"
                         android:layout_width="17dp"
                         android:layout_height="65dp"
-                        android:layout_weight="0.5"
-                        app:srcCompat="@drawable/mirror"
                         android:layout_marginTop="15dp"
+                        android:layout_weight="0.5"
+                        android:onClick="MirrorAmazon"
+                        app:srcCompat="@drawable/mirror"
                         tools:ignore="ContentDescription" />
 
                     <TextView
@@ -86,30 +86,32 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/fredoka_one"
                         android:gravity="start|center_horizontal|fill_vertical"
+                        android:onClick="MirrorAmazon"
                         android:paddingLeft="20dp"
-                        android:textColor="@color/faintblack"
                         android:text="Mirror\nStarting from\n250rs"
+                        android:textColor="@color/faintblack"
                         tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:orientation="horizontal"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="15dp"
-                    android:background="@drawable/accs">
+                    android:background="@drawable/accs"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/hornimg"
                         android:layout_width="17dp"
                         android:layout_height="65dp"
-                        android:layout_weight="0.3"
-                        app:srcCompat="@drawable/horn"
-                        android:layout_marginTop="22dp"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginTop="22dp"
+                        android:layout_weight="0.3"
+                        android:onClick="hornAmazon"
                         android:contentDescription="TODO"
+                        app:srcCompat="@drawable/horn"
                         tools:ignore="ContentDescription,HardcodedText,RtlHardcoded" />
 
                     <TextView
@@ -120,18 +122,20 @@
                         android:fontFamily="@font/fredoka_one"
                         android:gravity="start|center_horizontal|fill_vertical"
                         android:paddingLeft="20dp"
-                        android:textColor="@color/faintblack"
+                        android:onClick="hornAmazon"
                         android:text="Horn\nStarting from\n400rs"
+                        android:textColor="@color/faintblack"
                         tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:orientation="horizontal"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="15dp"
-                    android:background="@drawable/accs">
+                    android:background="@drawable/accs"
+                    android:orientation="horizontal">
 
 
                     <ImageView
@@ -140,6 +144,7 @@
                         android:layout_height="65dp"
                         android:layout_marginTop="18dp"
                         android:layout_weight="0.5"
+                        android:onClick="tyreAmazon"
                         app:srcCompat="@drawable/tire"
                         tools:ignore="ContentDescription,ImageContrastCheck" />
 
@@ -151,30 +156,32 @@
                         android:fontFamily="@font/fredoka_one"
                         android:gravity="start|center_horizontal|fill_vertical"
                         android:paddingLeft="20dp"
+                        android:onClick="tyreAmazon"
+                        android:text="Tyres\nStarting from\n1200rs"
                         android:textColor="@color/faintblack"
-                        android:text="Tires\nStarting from\n1200rs"
                         tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:orientation="horizontal"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="15dp"
+                    android:background="@drawable/accs"
 
-                    android:background="@drawable/accs">
+                    android:orientation="horizontal">
 
 
                     <ImageView
                         android:id="@+id/wlimg"
                         android:layout_width="17dp"
-                        android:layout_marginTop="22dp"
                         android:layout_height="60dp"
-                        android:layout_weight="0.4"
-                        app:srcCompat="@drawable/wheel"
                         android:layout_marginStart="10dp"
-                         />
+                        android:layout_marginTop="22dp"
+                        android:onClick="wheelAmazon"
+                        android:layout_weight="0.4"
+                        app:srcCompat="@drawable/wheel" />
 
                     <TextView
                         android:id="@+id/wltxt"
@@ -183,105 +190,114 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/fredoka_one"
                         android:gravity="start|center_horizontal|fill_vertical"
-                        android:textColor="@color/faintblack"
                         android:paddingLeft="30dp"
+                        android:onClick="wheelAmazon"
                         android:text="@string/wheels_nstarting_from_n800rs"
+                        android:textColor="@color/faintblack"
                         tools:ignore="RtlHardcoded,RtlSymmetry" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:orientation="horizontal"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="15dp"
-                    android:background="@drawable/accs">
+                    android:background="@drawable/accs"
+                    android:orientation="horizontal">
 
 
                     <ImageView
-                        android:id="@+id/tulimg"
+                        android:id="@+id/toolimg"
                         android:layout_width="5dp"
                         android:layout_height="50dp"
-                        android:layout_weight="0.2"
-                        app:srcCompat="@drawable/hatyar"
                         android:layout_marginStart="22dp"
                         android:layout_marginTop="22dp"
+                        android:layout_weight="0.2"
+                        android:onClick="toolkitAmazon"
+                        app:srcCompat="@drawable/hatyar"
                         tools:ignore="ContentDescription" />
 
                     <TextView
-                        android:id="@+id/tultxt"
+                        android:id="@+id/tooltxt"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.5"
                         android:fontFamily="@font/fredoka_one"
-                        android:textColor="@color/faintblack"
                         android:gravity="start|center_horizontal|fill_vertical"
                         android:paddingStart="30dp"
+                        android:onClick="toolkitAmazon"
                         android:text="@string/toolkits_nstarting_from_n400rs"
+                        android:textColor="@color/faintblack"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:orientation="horizontal"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="15dp"
+                    android:background="@drawable/accs"
 
-                    android:background="@drawable/accs">
+                    android:orientation="horizontal">
 
 
                     <ImageView
-                        android:id="@+id/wl2img"
+                        android:id="@+id/seatimg"
                         android:layout_width="17dp"
-                        android:layout_marginTop="22dp"
                         android:layout_height="60dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="22dp"
+                        android:onClick="seatAmazon"
                         android:layout_weight="0.4"
-                        app:srcCompat="@drawable/carseat"
-                        android:layout_marginStart="10dp" />
+                        app:srcCompat="@drawable/carseat" />
 
                     <TextView
-                        android:id="@+id/wl2txt"
+                        android:id="@+id/seattxt"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:fontFamily="@font/fredoka_one"
                         android:gravity="start|center_horizontal|fill_vertical"
-                        android:textColor="@color/faintblack"
                         android:paddingStart="30dp"
+                        android:onClick="seatAmazon"
                         android:text="@string/car_seats_nstarting_from_n4000rs"
+                        android:textColor="@color/faintblack"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:orientation="horizontal"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="15dp"
+                    android:background="@drawable/accs"
 
-                    android:background="@drawable/accs">
+                    android:orientation="horizontal">
 
 
                     <ImageView
-                        android:id="@+id/wl3img"
+                        android:id="@+id/helmetimg"
                         android:layout_width="17dp"
                         android:layout_height="60dp"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="22dp"
                         android:layout_weight="0.4"
-
+                        android:onClick="helmetAmazon"
                         app:srcCompat="@drawable/helmet"
                         tools:ignore="ImageContrastCheck" />
 
                     <TextView
-                        android:id="@+id/wl3txt"
+                        android:id="@+id/helmettxt"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:fontFamily="@font/fredoka_one"
                         android:gravity="start|center_horizontal|fill_vertical"
                         android:paddingStart="30dp"
+                        android:onClick="helmetAmazon"
                         android:text="@string/helmets_nstarting_from_n1200rs"
                         android:textColor="@color/faintblack"
                         tools:ignore="RtlSymmetry,TextSizeCheck" />
@@ -311,15 +327,15 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="0.7"
+            android:autofillHints=""
             android:fontFamily="@font/fredoka_one"
             android:gravity="center_vertical"
             android:hint="search"
             android:paddingLeft="20dp"
             android:textColor="@color/faintblack"
             android:textColorHint="@color/faintblack"
-            tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry,TextFields,VisualLintTextFieldSize"
 
-            android:autofillHints="" />
+            tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry,TextFields,VisualLintTextFieldSize" />
 
         <ImageView
             android:id="@+id/imageView"
