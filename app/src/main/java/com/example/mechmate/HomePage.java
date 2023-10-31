@@ -82,6 +82,13 @@ public class HomePage extends AppCompatActivity {
                 startActivity(intent3);
             }
         });
+        bookslot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent4 = new Intent(getApplicationContext(), book_a_slot.class);
+                startActivity(intent4);
+            }
+        });
     }
 
 }
