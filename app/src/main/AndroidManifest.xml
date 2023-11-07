@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,12 +15,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MechMate"
         tools:targetApi="31">
+
+        <activity android:name=".MechanicHomePage"
+            android:exported="false"/>
         <activity
             android:name=".book_a_slot"
             android:exported="false" />
         <activity
             android:name=".BuyAccessories"
-            android:exported="false"></activity>
+            android:exported="false">
+        </activity>
         <activity
             android:name=".FindMechanic"
             android:exported="false" />
@@ -32,9 +39,6 @@
             android:exported="false"
             android:label="@string/title_activity_dashboard"
             android:theme="@style/Theme.MechMate.NoActionBar" />
-        <activity
-            android:name=".MechanicRegistration"
-            android:exported="false" />
         <activity
             android:name=".MechanicRegistration"
             android:exported="false" />

@@ -95,15 +95,15 @@
                     android:textSize="24sp" />
 
                 <EditText
-                    android:id="@+id/email1"
+                    android:id="@+id/phonenum"
                     android:layout_width="230dp"
                     android:layout_height="70dp"
                     android:layout_margin="25dp"
                     android:background="@drawable/username"
                     android:ems="10"
                     android:fontFamily="@font/fredoka_one"
-                    android:hint=" Email"
-                    android:inputType="textEmailAddress"
+                    android:hint=" Phone No."
+                    android:inputType="phone"
                     android:textColor="@color/faintblack"
                     android:textColorHint="@color/faintblack"
                     android:textSize="24sp" />

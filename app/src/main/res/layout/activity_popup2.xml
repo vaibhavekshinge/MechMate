@@ -22,7 +22,7 @@
 
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/mecloginphone"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -33,8 +33,8 @@
             android:ems="10"
             android:fontFamily="@font/fredoka_one"
             android:gravity="center"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
+            android:hint="Phone No."
+            android:inputType="phone"
             android:textColor="@color/faintblack"
             android:textColorHint="@color/faintblack"
             android:textSize="16sp" />
