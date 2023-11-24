@@ -74,10 +74,10 @@ public class MechanicRegistration extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<Void> task) {
                                         Toast.makeText(MechanicRegistration.this, "Registered Successfully", Toast.LENGTH_LONG).show();
 
-//                                        SharedPreferences preferences = getSharedPreferences("mec_prefs", MODE_PRIVATE);
-//                                        SharedPreferences.Editor editor = preferences.edit();
-//                                        editor.putBoolean("isLoggedIn", true);  // Set the flag to true after sign-in or sign-up
-//                                        editor.apply();
+                                        SharedPreferences preferences = getSharedPreferences(popup2.PREFS_NAME, 0);
+                                        SharedPreferences.Editor editor = preferences.edit();
+                                        editor.putBoolean("isLoggedIn", true);  // Set the flag to true after sign-in or sign-up
+                                        editor.apply();
 
                                         Intent intent2 = new Intent(getApplicationContext(), MechanicHomePage.class);
                                         intent2.putExtra("shopname", shopnames);

@@ -22,16 +22,17 @@ public class MechanicHomePage extends AppCompatActivity {
         ShopName = findViewById(R.id.garage);
         backmhp = findViewById(R.id.backmhp);
 
-        ShopName.setText(getIntent().getStringExtra("shopname"));
+        String shopname = getIntent().getStringExtra("shopname");
+        ShopName.setText(shopname);
 
         backmhp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(MechanicHomePage.this, "Logged out", Toast.LENGTH_SHORT).show();
-//                SharedPreferences preferences = getSharedPreferences("mec_prefs", MODE_PRIVATE);
-//                SharedPreferences.Editor editor = preferences.edit();
-//                editor.putBoolean("isLoggedIn", false);  // Set the flag to false on sign-out
-//                editor.apply();
+                SharedPreferences preferences = getSharedPreferences(popup2.PREFS_NAME, 0);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putBoolean("isLoggedIn", false);  // Set the flag to false on sign-out
+                editor.apply();
 
                 Intent intent = new Intent(getApplicationContext(), HomePage.class);
                 startActivity(intent);

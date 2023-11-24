@@ -14,6 +14,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,27 +38,33 @@ public class HomePage extends AppCompatActivity {
     FusedLocationProviderClient fusedLocationProviderClient;
 
     private final static int REQUEST_CODE = 100;
+    private static int SPLASH_TIME_OUT=3000;
 
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        SharedPreferences preferences = getSharedPreferences("mec_prefs", MODE_PRIVATE);
-//        boolean isLoggedIn = preferences.getBoolean("isLoggedIn", false);
-//
-//        if (isLoggedIn) {
-//            // User is authenticated, navigate to the home page
-//            startActivity(new Intent(getApplicationContext(), MechanicHomePage.class));
-//        }
-//        else {
-//            // User is not authenticated, navigate to sign-in or sign-up
-//            startActivity(new Intent(getApplicationContext(), HomePage.class));
-//        }
-//        finish();
-
         setContentView(R.layout.activity_home_page);
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                SharedPreferences preferences = getSharedPreferences(popup2.PREFS_NAME, 0);
+                boolean isLoggedIn = preferences.getBoolean("isLoggedIn", false);
+
+                if (isLoggedIn) {
+                    // User is authenticated, navigate to the home page
+                    startActivity(new Intent(getApplicationContext(), MechanicHomePage.class));
+                    finish();
+                }
+//                else {
+//                    // User is not authenticated, navigate to sign-in or sign-up
+//                    startActivity(new Intent(getApplicationContext(), HomePage.class));
+//                    finish();
+//                }
+            }
+        },SPLASH_TIME_OUT);
 
         greetmsg = findViewById(R.id.Greetmsg);
         menubar = findViewById(R.id.menubar);

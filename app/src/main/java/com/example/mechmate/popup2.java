@@ -26,6 +26,8 @@ public class popup2 extends AppCompatActivity {
 
     DatabaseReference reference;
 
+    public static String PREFS_NAME = "MyPrefsFile";
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,10 +86,10 @@ public class popup2 extends AppCompatActivity {
 
                         if(Objects.equals(password, readedpassword)){
 
-//                            SharedPreferences preferences = getSharedPreferences("user_prefs", MODE_PRIVATE);
-//                            SharedPreferences.Editor editor = preferences.edit();
-//                            editor.putBoolean("isLoggedIn", true);  // Set the flag to true after sign-in or sign-up
-//                            editor.apply();
+                            SharedPreferences preferences = getSharedPreferences(popup2.PREFS_NAME,0);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putBoolean("isLoggedIn", true);  // Set the flag to true after sign-in or sign-up
+                            editor.apply();
 
                             Intent intent2 = new Intent(getApplicationContext(), MechanicHomePage.class);
                             intent2.putExtra("shopname", garagename);
