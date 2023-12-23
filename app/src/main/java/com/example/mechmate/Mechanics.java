@@ -4,6 +4,8 @@ public class Mechanics {
 
     String mecnames, shoplocs, adharnos, shopnames, phones, passwordtoregisters, confirmpasswords;
 
+//    double latitude, longitude;
+
     public Mechanics() {
     }
 
@@ -15,6 +17,8 @@ public class Mechanics {
         this.phones = phones;
         this.passwordtoregisters = passwordtoregisters;
         this.confirmpasswords = confirmpasswords;
+//        this.latitude = latitude;
+//        this.longitude = longitude;
     }
 
     public String getMecnames() {
@@ -72,4 +76,16 @@ public class Mechanics {
     public void setConfirmpasswords(String confirmpasswords) {
         this.confirmpasswords = confirmpasswords;
     }
+
+//    public double getLatitude() {return latitude;}
+//
+//    public void setLatitude(double latitude){
+//        this.latitude = latitude;
+//    }
+//
+//    public double getLongitude(){return longitude;}
+//
+//    public void setLongitude(double longitude){
+//        this.longitude = longitude;
+//    }
 }
