@@ -41,7 +41,8 @@
                 android:textColor="@color/faintblack"
                 android:textSize="24dp" />
 
-            <ListView
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
@@ -101,7 +102,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="30dp"
         android:fontFamily="@font/fredoka_one"
-        android:text="Vaibhav Garages"
+        android:text="Garage Name"
         android:textColor="@color/mygreen"
         android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"

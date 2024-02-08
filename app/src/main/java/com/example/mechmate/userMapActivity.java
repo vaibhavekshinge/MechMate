@@ -1,45 +1,39 @@
 package com.example.mechmate;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
-import android.content.Context;
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationManager;
 //import android.location.LocationRequest;
 import android.os.Bundle;
-import android.os.Looper;
-import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMapOptions;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.example.mechmate.databinding.ActivityUserMapBinding;
-import com.google.android.gms.tasks.OnSuccessListener;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class userMapActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -47,10 +41,27 @@ public class userMapActivity extends FragmentActivity implements OnMapReadyCallb
     private FusedLocationProviderClient fusedLocationProviderClient;
     private LocationCallback locationCallback;
 
+    ImageView callmechanic;
+
+    TextView mechanicname, mechanicdist;
+
+    FirebaseDatabase db;
+    DatabaseReference reference;
+
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_map);
+
+        callmechanic = findViewById(R.id.callmecahanic);
+        mechanicname = findViewById(R.id.mechanicname);
+        mechanicdist = findViewById(R.id.distance);
+
+
+
+        FirebaseApp.initializeApp(this);
 
         // Obtain the SupportMapFragment and request map ready callback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -82,6 +93,28 @@ public class userMapActivity extends FragmentActivity implements OnMapReadyCallb
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(), HomePage.class);
+        startActivity(intent);
+        finish();
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        String customerId = getIntent().getStringExtra("vechileno");
+
+        db = FirebaseDatabase.getInstance();
+        reference = db.getReference("Customers").child(customerId);
+        reference.removeValue();
+
+        fusedLocationProviderClient.removeLocationUpdates(locationCallback);
+    }
+
+    @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 101 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -104,7 +137,26 @@ public class userMapActivity extends FragmentActivity implements OnMapReadyCallb
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
+        fusedLocationProviderClient.requestLocationUpdates(locationRequest, new LocationCallback() {
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                super.onLocationResult(locationResult);
+                if (locationResult != null && locationResult.getLastLocation() != null) {
+                    Location location = locationResult.getLastLocation();
+                    // Update the customer location in Firebase Database
+                    updateLocation(location.getLatitude(), location.getLongitude());
+                }
+            }
+        }, getMainLooper());
+    }
+
+    // updating database with current latitude and longitude
+    private void updateLocation(double latitude, double longitude) {
+
+        db = FirebaseDatabase.getInstance();
+        reference = db.getReference("Customers").child(getIntent().getStringExtra("vechileno"));
+        reference.child("customerLatitude").setValue(latitude);
+        reference.child("customerLongitude").setValue(longitude);
     }
 
     // Update the map with the new location
@@ -126,6 +178,7 @@ public class userMapActivity extends FragmentActivity implements OnMapReadyCallb
         // Enable My Location layer if possible
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             map.setMyLocationEnabled(true);
+            retriveMechanicLocations();
         }
     }
 
@@ -134,5 +187,39 @@ public class userMapActivity extends FragmentActivity implements OnMapReadyCallb
         super.onStop();
         // Stop location updates when the activity stops
         fusedLocationProviderClient.removeLocationUpdates(locationCallback);
+    }
+
+    private void retriveMechanicLocations(){
+        DatabaseReference mecref = FirebaseDatabase.getInstance().getReference("Mechanics");
+
+        mecref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot mechanicsnapshot : snapshot.getChildren()){
+                    Mechanics mechanics = mechanicsnapshot.getValue(Mechanics.class);
+                    if(mechanics != null){
+                        double latitude = mechanics.meclatitude;
+                        double longitude = mechanics.meclongitude;
+                        String name = mechanics.mecnames;
+
+                        displayMechanicOnMap(latitude, longitude, name);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void displayMechanicOnMap(double mechanicLatitude, double mechanicLongitude, String mecname) {
+        if (map != null) {
+            LatLng mechanicLatLng = new LatLng(mechanicLatitude, mechanicLongitude);
+            // Create a marker for each mechanic's location
+            MarkerOptions markerOptions = new MarkerOptions().position(mechanicLatLng).title("Mechanic:" + mecname).icon(BitmapDescriptorFactory.fromResource(R.drawable.mechaniclocation3));
+            map.addMarker(markerOptions);
+        }
     }
 }

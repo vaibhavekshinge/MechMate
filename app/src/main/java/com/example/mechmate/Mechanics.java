@@ -2,23 +2,23 @@ package com.example.mechmate;
 
 public class Mechanics {
 
-    String mecnames, shoplocs, adharnos, shopnames, phones, passwordtoregisters, confirmpasswords;
+    String mecnames, mecemail, adharnos, shopnames, phones, passwordtoregisters, confirmpasswords;
 
-//    double latitude, longitude;
+    double meclatitude, meclongitude;
 
     public Mechanics() {
     }
 
-    public Mechanics(String mecnames, String shoplocs, String adharnos, String shopnames, String phones, String passwordtoregisters, String confirmpasswords) {
+    public Mechanics(String mecnames, String mecemail, String adharnos, String shopnames, String phones, String passwordtoregisters, String confirmpasswords, double meclatitude, double meclongitude) {
         this.mecnames = mecnames;
-        this.shoplocs = shoplocs;
+        this.mecemail = mecemail;
         this.adharnos = adharnos;
         this.shopnames = shopnames;
         this.phones = phones;
         this.passwordtoregisters = passwordtoregisters;
         this.confirmpasswords = confirmpasswords;
-//        this.latitude = latitude;
-//        this.longitude = longitude;
+        this.meclatitude = meclatitude;
+        this.meclongitude = meclongitude;
     }
 
     public String getMecnames() {
@@ -29,12 +29,12 @@ public class Mechanics {
         this.mecnames = mecnames;
     }
 
-    public String getShoplocs() {
-        return shoplocs;
+    public String getMecemail() {
+        return mecemail;
     }
 
-    public void setShoplocs(String shoplocs) {
-        this.shoplocs = shoplocs;
+    public void setMecemail(String shoplocs) {
+        this.mecemail = mecemail;
     }
 
     public String getAdharnos() {
@@ -76,16 +76,20 @@ public class Mechanics {
     public void setConfirmpasswords(String confirmpasswords) {
         this.confirmpasswords = confirmpasswords;
     }
+    public double getMeclatitude() {
+        return meclatitude;
+    }
 
-//    public double getLatitude() {return latitude;}
-//
-//    public void setLatitude(double latitude){
-//        this.latitude = latitude;
-//    }
-//
-//    public double getLongitude(){return longitude;}
-//
-//    public void setLongitude(double longitude){
-//        this.longitude = longitude;
-//    }
+    public void setMeclatitude(double meclatitude) {
+        this.meclatitude = meclatitude;
+    }
+
+    public double getMeclongitude() {
+        return meclongitude;
+    }
+
+    public void setMeclongitude(double meclongitude) {
+        this.meclongitude = meclongitude;
+    }
+
 }

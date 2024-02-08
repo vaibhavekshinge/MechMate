@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -35,6 +36,8 @@ public class OTP2 extends AppCompatActivity {
     TextView mobNum, resendotp;
     Button submit;
     ProgressBar progressBar2;
+
+    public static String homePagePref = "MyHomePrefsFile";
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -83,6 +86,12 @@ public class OTP2 extends AppCompatActivity {
                                         submit.setVisibility(View.VISIBLE);
 
                                         if(task.isSuccessful()){
+
+                                            SharedPreferences HomePagepreferences = getSharedPreferences(OTP2.homePagePref, MODE_PRIVATE);
+                                            SharedPreferences.Editor editor = HomePagepreferences.edit();
+                                            editor.putBoolean("isVerified", true); // Save the verification status
+                                            editor.apply();
+
                                             Intent intent = new Intent(getApplicationContext(),HomePage.class);
                                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             startActivity(intent);

@@ -2,19 +2,38 @@ package com.example.mechmate;
 
 public class Customers {
 
-    String customernames, types, models, vechilenos, prblmdescs;
+    String customernames;
+    String types;
+    String models;
+    String vechilenos;
+    String prblmdescs;
+
+    public String getCustomerphones() {
+        return customerphones;
+    }
+
+    public void setCustomerphones(String customerphones) {
+        this.customerphones = customerphones;
+    }
+
+    String customerphones;
+
+    double customerLatitude, customerLongitude;
 
     public  Customers(){
 
     }
 
-    public Customers(String customernames, String types, String models, String vechilenos, String prblmdescs){
+    public Customers(String customernames, String types, String models, String vechilenos, String prblmdescs, double customerLatitude, double customerLongitude, String customerphones){
 
         this.customernames = customernames;
         this.types = types;
         this.models = models;
         this.vechilenos = vechilenos;
         this.prblmdescs = prblmdescs;
+        this.customerLatitude = customerLatitude;
+        this.customerLongitude = customerLongitude;
+        this.customerphones = customerphones;
     }
 
     public String getCustomernames() {
@@ -56,4 +75,11 @@ public class Customers {
     public void setPrblmdescs(String prblmdescs) {
         this.prblmdescs = prblmdescs;
     }
+
+    public double getCustomerLatitude() { return customerLatitude; }
+
+    public void setCustomerLatitude(double customerLatitude){ this.customerLatitude = customerLatitude;}
+    public double getCustomerLongitude() { return customerLongitude; }
+
+    public void setCustomerLongitude(double customerLongitude){ this.customerLongitude = customerLongitude;}
 }

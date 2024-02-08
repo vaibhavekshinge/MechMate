@@ -81,6 +81,20 @@
                     android:textSize="24sp" />
 
                 <EditText
+                    android:id="@+id/customerphone"
+                    android:layout_width="230dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/username"
+                    android:ems="20"
+                    android:fontFamily="@font/fredoka_one"
+                    android:hint=" Phone No."
+                    android:inputType="phone"
+                    android:textColor="@color/faintblack"
+                    android:textColorHint="@color/faintblack"
+                    android:textSize="24sp" />
+
+                <EditText
                     android:id="@+id/vehicletype"
                     android:layout_width="230dp"
                     android:layout_height="70dp"

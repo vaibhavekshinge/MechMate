@@ -30,4 +30,5 @@
     <string name="helmets_nstarting_from_n1200rs">Helmets\nstarting from\n1200rs</string>
     <string name="title_activity_user_map">userMapActivity</string>
     <string name="maps_api_key">AIzaSyB2kIujbZxQomcxszt4wJbFN0LgBU0WVug</string>
+    <string name="maps_api_key_new">AIzaSyBcws-v9cR5s8nda_wYIi5prlw09iS0L4k</string>
 </resources>
