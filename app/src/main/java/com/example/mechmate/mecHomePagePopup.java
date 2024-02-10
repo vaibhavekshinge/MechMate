@@ -3,17 +3,25 @@ package com.example.mechmate;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,7 +39,7 @@ public class mecHomePagePopup extends AppCompatActivity {
     Double CusLat, CusLon;
 
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +64,9 @@ public class mecHomePagePopup extends AppCompatActivity {
 
         CusLat = Double.parseDouble(getIntent().getStringExtra("selectedCusLat"));
         CusLon = Double.parseDouble(getIntent().getStringExtra("selectedCusLon"));
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancel(0); // Replace 0 with the notification ID you used when showing the notification
 
         RejectReq.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,21 +97,14 @@ public class mecHomePagePopup extends AppCompatActivity {
                 Connections connection = new Connections(mechanicId, customerId);
 
                 // Update the Connections node with the new connection
-                connectionsRef.child(customerId).setValue(connection);
+                connectionsRef.child(CusPhoneNo).setValue(connection);
 
                 // Remove the selected customer from the Customers node
                 DatabaseReference customersRef = FirebaseDatabase.getInstance().getReference().child("Customers");
                 customersRef.child(customerId).removeValue();
 
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                    if(checkSelfPermission(Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED){
-                        //Send sms to mechanic
-                        sendSMStoMechanic(getIntent().getStringExtra("mecPhoneNo"), CusNames, CusPhoneNo, CusPrblms, CusModels);
-                    }
-                    else{
-                        requestPermissions(new String[]{Manifest.permission.SEND_SMS}, PERMISSION_REQUEST_SEND_SMS);
-                    }
-                }
+                sendNotification(CusNames, CusPhoneNo, CusPrblms, CusModels);
+
                 //Redirecting to Google maps
                 String uri = "google.navigation:q=" + CusLat + "," + CusLon;
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
@@ -111,24 +115,62 @@ public class mecHomePagePopup extends AppCompatActivity {
                 } else {
                     Toast.makeText(mecHomePagePopup.this, "Google Maps not installed", Toast.LENGTH_SHORT).show();
                 }
+
+
             }
         });
     }
 
-    private void sendSMStoMechanic(String mecPhoneNo, String cusNames, String cusPhoneNo, String cusPrblms, String cusModels) {
-        try {
-            SmsManager smsManager = SmsManager.getDefault();
-            String smsMessage = "Your customer is waiting:\n"
-                    + "Customer: " + cusNames + "\n"
-                    + "Phone Number: " + cusPhoneNo + "\n"
-                    + "Model: " + cusModels + "\n"
-                    + "Problem Description: " + cusPrblms;
+    public void sendNotification(String cusNames, String cusPhoneNo, String cusPrblms, String cusModels) {
+        String channelId = "CHANNEL_ID_NOTIFICATION";
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, channelId);
+        builder.setSmallIcon(R.drawable.baseline_notifications_active_24)
+                .setContentTitle("Your customer is waiting")
+                .setContentText("Customer: " + cusNames)
+                .setAutoCancel(false)  // Make the notification non-dismissable
+                .setOngoing(true)      // Make the notification persistent
+                .setPriority(Notification.PRIORITY_DEFAULT);
 
-            smsManager.sendTextMessage(mecPhoneNo, null, smsMessage, null, null);
-            Toast.makeText(this, "SMS sent to the mechanic", Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            Toast.makeText(this, "Failed to send SMS", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
+        // Create BigTextStyle to display long content
+        NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle();
+        bigTextStyle.setBigContentTitle("Your customer is waiting")
+                .bigText("Customer: " + cusNames + "\n" +
+                        "Phone Number: " + cusPhoneNo + "\n" +
+                        "Model: " + cusModels + "\n" +
+                        "Problem Description: " + cusPrblms);
+        builder.setStyle(bigTextStyle);
+
+        // Create intents for actions
+        Intent callIntent = new Intent(Intent.ACTION_DIAL);
+        callIntent.setData(Uri.parse("tel:" + cusPhoneNo));
+        PendingIntent callPendingIntent = PendingIntent.getActivity(this, 0, callIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        Intent markAsDoneIntent = new Intent(this, markAsDone.class);
+        markAsDoneIntent.putExtra("cusPhoneNo", cusPhoneNo);
+        PendingIntent markAsDonePendingIntent = PendingIntent.getActivity(this, 0, markAsDoneIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        // Add actions to the notification
+        builder.addAction(R.drawable.ic_call, "Call Customer", callPendingIntent)
+                .addAction(R.drawable.ic_done, "Mark as Done", markAsDonePendingIntent);
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel notificationChannel = new NotificationChannel(channelId, "MechMate Notifications", NotificationManager.IMPORTANCE_HIGH);
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.RED);
+            notificationChannel.enableVibration(true);
+            notificationChannel.setDescription("Notifications for MechMate app");
+            notificationManager.createNotificationChannel(notificationChannel);
         }
+
+        // Unique ID for the notification
+        int notificationId = 0;
+
+        // Build the notification
+        Notification notification = builder.build();
+
+        // Show the notification
+        notificationManager.notify(notificationId, notification);
     }
+
 }

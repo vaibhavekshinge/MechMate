@@ -23,13 +23,14 @@
         android:theme="@style/Theme.MechMate"
         tools:targetApi="31">
         <activity
+            android:name=".markAsDone"
+            android:exported="false" />
+        <activity
             android:name=".mecHomePagePopup"
             android:exported="false" />
         <activity
             android:name=".mechanicMapActivity"
             android:exported="false" />
-
-
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -47,12 +48,11 @@
             android:exported="false" />
         <activity
             android:name=".BuyAccessories"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".FindMechanic"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".popup2"
             android:exported="false" />
@@ -70,11 +70,13 @@
         <activity
             android:name=".HomePage"
             android:exported="false">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".OTP2"
@@ -87,13 +89,11 @@
         <activity
             android:name=".Starting_Page"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-
-
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <meta-data
