@@ -10,12 +10,12 @@
     <LinearLayout
         android:layout_width="320dp"
         android:layout_height="380dp"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="156dp"
         android:background="@drawable/mechanicmaptext"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -23,12 +23,12 @@
             android:id="@+id/CusName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Vaibhav Ekshinge"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:layout_marginTop="50dp"
+            android:layout_marginRight="10dp"
             android:width="10dp"
             android:fontFamily="@font/fredoka_one"
+            android:text="Vaibhav Ekshinge"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -36,61 +36,61 @@
             android:id="@+id/CusVechileNo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="MH09VE1800"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:width="10dp"
             android:fontFamily="@font/fredoka_one"
+            android:text="MH09VE1800"
             android:textColor="@color/black"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/CusModel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Car, Thar"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:width="10dp"
             android:fontFamily="@font/fredoka_one"
+            android:text="Car, Thar"
             android:textColor="@color/black"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/CusDist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Approx. 18 Km"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:width="10dp"
             android:fontFamily="@font/fredoka_one"
+            android:text="Approx. 18 Km"
             android:textColor="@color/black"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textView17"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:width="10dp"
             android:fontFamily="@font/fredoka_one"
+            android:text=""
             android:textColor="@color/black"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/CusPrblm"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:text="My front tyre is jam,  I think disc is jam, not ableto move from one place to another"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:width="10dp"
             android:fontFamily="@font/fredoka_one"
+            android:text="My front tyre is jam,  I think disc is jam, not ableto move from one place to another"
             android:textColor="@color/black"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
